@@ -1,3 +1,5 @@
-com\mindcraft\GamePanel.class
 com\mindcraft\KeyHandler.class
 com\mindcraft\App.class
+com\mindcraft\entities\Player.class
+com\mindcraft\entities\Entity.class
+com\mindcraft\GamePanel.class
