@@ -8,19 +8,21 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import com.mindcraft.entities.Player;
+import com.mindcraft.tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 16;
     final int scale = 3;
 
     public final int tileSize = originalTileSize * scale;
-    final int maxScreenCols = 18;
-    final int maxScreenRows = 14;
-    final int screenWidth = tileSize * maxScreenCols;
-    final int screenHeight = tileSize * maxScreenRows;
+    public final int maxScreenCols = 16;
+    public final int maxScreenRows = 12;
+    public final int screenWidth = tileSize * maxScreenCols;
+    public final int screenHeight = tileSize * maxScreenRows;
 
     int FPS = 60;
 
+    TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
     Player player = new Player(this, keyHandler);
@@ -73,6 +75,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
+        tileManager.draw(g2);
         player.draw(g2);
 
         g2.dispose();
